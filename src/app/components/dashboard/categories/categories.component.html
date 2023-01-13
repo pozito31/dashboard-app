@@ -1,0 +1,90 @@
+<div class="row" id="categories" *ngIf="showCategories">
+  <div class="col-12">
+
+    <!-- Cabecera -->
+    <div class="row no-gutters">
+      <div class="col-12 border-bottom pl-0 pb-2">
+        <span class="title-section mr-4">{{'label.categories' | translate}}</span>
+
+        <button class="btn btn-primary btn-sm"
+          [routerLink]="['/add-category']">{{'label.add.category' | translate}}</button>
+
+      </div>
+    </div>
+
+    <!-- Buscador -->
+    <div class="row no-gutters mt-4">
+      <div class="col-12">
+
+        <div class="row">
+          <div class="col-12">
+            <span>{{'label.search.category' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 input-group">
+            <input type="text" id="search" class="form-control" #search (keydown.enter)="updateWord(search.value)" [placeholder]="'label.3.characters' | translate">
+            <span class="input-group-btn">
+              <button class="btn btn-primary rounded-0" (click)="updateWord(search.value)">{{'label.search' | translate}}</button>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="row no-gutters mt-4">
+      <div class="col-12">
+
+        <p-table [columns]="cols" [value]="categories" [responsive]="true">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let column of columns">
+                {{column.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-category>
+            <tr>
+              <!-- Checkbox -->
+              <td>
+                <span class="p-column-title">{{'label.select.category' | translate}}</span>
+                <p-checkbox name="categories" [value]="category.id" [(ngModel)]="selectCategories"></p-checkbox>
+              </td>
+
+              <!-- Nombre categoria -->
+              <td>
+                <span class="p-column-title">{{'label.name.category' | translate}}</span>
+                <span highligth [search]="searchWord">{{category.name}}</span>
+              </td>
+
+              <!-- Descripcion categoria -->
+              <td>
+                <span class="p-column-title">{{'label.description.category' | translate}}</span>
+                <span highligth [search]="searchWord">{{category.description}}</span>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+      </div>
+    </div>
+
+    <!-- Boton para eliminar categorias -->
+    <div class="row no-gutters mt-4" *ngIf="selectCategories.length > 0">
+      <div class="col-12">
+        <button class="btn btn-primary" (click)="deleteCategories()">{{'label.delete.categories' | translate}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Spinner -->
+<div class="h-100" *ngIf="!showCategories">
+  <div class="spinner">
+    <img src="assets/img/spinner.gif" alt="">
+  </div>
+</div>

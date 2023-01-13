@@ -1,0 +1,112 @@
+<div class="row" id="posts" *ngIf="showPosts">
+  <div class="col-12">
+
+    <!-- Cabecera -->
+    <div class="row no-gutters">
+      <div class="col-12 border-bottom pl-0 pb-2">
+        <span class="title-section mr-4">{{'label.posts' | translate}}</span>
+
+        <button class="btn btn-primary btn-sm"
+          [routerLink]="['/add-post']">{{'label.add.post' | translate}}</button>
+
+      </div>
+    </div>
+
+    <!-- Buscador -->
+    <div class="row no-gutters mt-4">
+      <div class="col-12">
+
+        <div class="row">
+          <div class="col-12">
+            <span>{{'label.search.post' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 input-group">
+            <input type="text" id="search" class="form-control" #search (keydown.enter)="updateWord(search.value)" [placeholder]="'label.3.characters' | translate">
+            <span class="input-group-btn">
+              <button class="btn btn-primary rounded-0" (click)="updateWord(search.value)">{{'label.search' | translate}}</button>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="row no-gutters mt-4">
+      <div class="col-12">
+
+        <p-table [columns]="cols" [value]="posts" [responsive]="true">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let column of columns">
+                {{column.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-post>
+            <tr>
+              <!-- Checkbox -->
+              <td>
+                <span class="p-column-title">{{'label.select.post' | translate}}</span>
+                <p-checkbox name="posts" [value]="post.id" [(ngModel)]="selectedPosts"></p-checkbox>
+              </td>
+
+              <!-- Titulo post -->
+              <td>
+                <span class="p-column-title">{{'label.title' | translate}}</span>
+                <span highligth [search]="searchWord">{{post.title}}</span>
+              </td>
+
+              <!-- Fecha post -->
+              <td>
+                <span class="p-column-title">{{'label.date.post' | translate}}</span>
+                <span>{{post.date | date: 'dd/MM/yyyy'}}</span>
+              </td>
+
+              <!-- Categorias post -->
+              <td>
+                <span class="p-column-title">{{'label.categories' | translate}}</span>
+                <ng-container *ngIf="!post.categories || post.categories.length === 0">
+                  <span>{{'label.no.categories' | translate}}</span>
+                </ng-container>
+                <!-- Contateno con el pipe join -->
+                <ng-container *ngIf="post.categories && post.categories.length > 0">
+                  <span>{{post.categories | join: 'name':', '}}</span>  
+                </ng-container>
+
+
+              </td>
+
+              <!-- Imagen thumbnail -->
+              <td>
+                <span class="p-column-title">{{'label.thumbnail' | translate}}</span>
+                <span *ngIf="post.img"><img [src]="post.img" class="thumbnail"></span>
+              </td>
+
+
+            </tr>
+          </ng-template>
+        </p-table>
+
+      </div>
+    </div>
+
+    <!-- Boton para borrar posts -->
+    <div class="row no-gutters mt-4" *ngIf="selectedPosts.length > 0">
+      <div class="col-12">
+        <button class="btn btn-primary" (click)="deletePosts()">{{'label.delete.posts' | translate}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Spinner -->
+<div class="h-100" *ngIf="!showPosts">
+  <div class="spinner">
+    <img src="assets/img/spinner.gif" alt="">
+  </div>
+</div>

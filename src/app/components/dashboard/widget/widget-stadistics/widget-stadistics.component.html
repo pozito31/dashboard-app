@@ -1,0 +1,45 @@
+<app-widget>
+  <!-- Zona heredable desde el padre -->
+  <span title-widget>{{'label.widget.title.stadistics' | translate}}</span>
+
+  <!-- Zona heredable desde el padre -->
+  <div class="row" content-widget>
+    <div class="col-12">
+
+      <div class="row">
+
+        <!-- Numero de usuarios -->
+        <div class="col-xl-6 col-lg-12">
+          <i class="fa fa-users"></i>
+          <span class="ml-3 mr-3">{{'label.users' | translate}}</span>
+          <span>{{numUsers}}</span>
+        </div>
+
+        <!-- Numero de posts -->
+        <div class="col-xl-6 col-lg-12">
+          <i class="fa fa-pencil-square-o"></i>
+          <span class="ml-3 mr-3">{{'label.posts' | translate}}</span>
+          <span>{{numPosts}}</span>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <!-- Numero de comentarios -->
+        <div class="col-xl-6 col-lg-12">
+          <i class="fa fa-comments-o"></i>
+          <span class="ml-3 mr-3">{{'label.comments' | translate}}</span>
+          <span>{{numComments}}</span>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Zona heredable desde el padre -->
+  <span footer-widget>{{'label.info.widget.stadistics' | translate}}</span>
+
+</app-widget>

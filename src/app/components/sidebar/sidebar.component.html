@@ -1,0 +1,83 @@
+<div class="row no-gutters h-100" id="sidebar">
+  <div class="col-12">
+
+    <!-- Nombre del sitio, sacado de la confi -->
+    <div class="row no-gutters text-center block-logo">
+      <div class="col-12 p-0">
+        <img class="img-logo" [src]="config.logo" />
+        <span class="text-logo d-sm-none d-lg-inline-block ml-3 text-light">{{config.nameSite}}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <!-- Navbar -->
+        <nav class="navbar-dark navbar-expand-sm">
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-light" id="navbar">
+            <ul class="navbar-nav flex-column w-100">
+
+              <!-- Resumen -->
+              <li class="nav-item" [routerLink]="['/resume']" routerLinkActive="router-link-active">
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fa fa-home"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>{{'label.resume' | translate}}</span>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Posts -->
+              <li class="nav-item" [routerLink]="['/posts']" routerLinkActive="router-link-active">
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fa fa-pencil-square-o"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>{{'label.posts' | translate}}</span>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Categorias -->
+              <li class="nav-item" [routerLink]="['/categories']" routerLinkActive="router-link-active">
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fa fa-thumb-tack"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>{{'label.categories' | translate}}</span>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Logout -->
+              <li class="nav-item" routerLinkActive="router-link-active" (click)="auth.logout()">
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fa fa-power-off"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>{{'label.logout' | translate}}</span>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

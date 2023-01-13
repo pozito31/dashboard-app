@@ -1,0 +1,22 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title">
+      <!-- Marco esta zona como heredable -->
+      <ng-content select="[title-widget]"></ng-content>
+      <hr/>
+    </h4>
+    <div class="card-text">
+      <div class="row">
+        <div class="col-12">
+            <!-- Marco esta zona como heredable -->
+          <ng-content select="[content-widget]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <i class="fa fa-info-circle mr-1"></i>
+    <!-- Marco esta zona como heredable -->
+    <ng-content select="[footer-widget]"></ng-content>
+  </div>
+</div>

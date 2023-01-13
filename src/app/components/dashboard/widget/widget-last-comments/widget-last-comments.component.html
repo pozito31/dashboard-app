@@ -1,0 +1,29 @@
+<app-widget>
+  
+  <!-- Zona heredable desde el padre -->
+  <span title-widget>{{'label.last.comments' | translate}}</span>
+
+  <!-- Zona heredable desde el padre -->
+  <div content-widget>
+
+    <div class="row" *ngIf="listComments.length === 0">
+      <div class="col-12">
+        {{'label.no.comments' | translate}}
+      </div>
+    </div>
+
+    <div class="row" *ngIf="listComments.length > 0">
+      <div class="col-12">
+        <div *ngFor="let comment of listComments">
+          <p>{{comment.user + ' ('+ (comment.date | date:'dd/MM/yyyy') +')'}}</p>
+          <p>{{comment.text}}</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Zona heredable desde el padre -->
+  <span footer-widget>{{'label.info.widget.comments' | translate}}</span>
+
+</app-widget>

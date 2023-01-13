@@ -1,0 +1,35 @@
+#sidebar {
+    background: #23282d;
+    position: relative;
+}
+
+#sidebar .img-logo {
+    width: 50px;
+    height: 50px;
+}
+
+#sidebar .text-logo {
+    font-size: 20px;
+}
+
+#sidebar .block-logo {
+    padding: 15px;
+    border-bottom: 1px solid #FFF;
+}
+
+#sidebar .router-link-active {
+    background: #0073aa;
+}
+
+#sidebar .nav-item {
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    #sidebar .collapse {
+        position: absolute;
+        width: 100%;
+        z-index: 10;
+        background: #23282d;
+    }
+}

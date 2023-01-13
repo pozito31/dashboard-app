@@ -1,0 +1,8 @@
+{
+    "logo": "assets/img/logo.png",
+    "logoLogin": "assets/img/logo_login.png",
+    "name_site": "Disco Duro de Roer",
+    "min": 5500,
+    "max": 7000,
+    "num_users": 52
+}

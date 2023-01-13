@@ -1,0 +1,22 @@
+<!-- Solo se muestra cuando estamos logueados -->
+<div class="container-fluid" *ngIf="auth.isAuthenticated()">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-sm-2 col-12 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!-- Dashboard -->
+    <div class="col-sm-10 col-12">
+      <app-dashboard></app-dashboard>
+    </div>
+  </div>
+</div>
+
+<!-- Login, solo se mostraria cuando no estamos logueados -->
+<div class="container h-100" *ngIf="!auth.isAuthenticated()">
+  <div class="row">
+    <div class="col-12">
+      <app-login></app-login>
+    </div>
+  </div>
+</div>

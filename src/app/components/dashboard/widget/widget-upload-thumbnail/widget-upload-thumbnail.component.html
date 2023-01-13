@@ -1,0 +1,23 @@
+<app-widget>
+
+  <!-- Zona heredable desde el padre -->
+  <span title-widget>{{'label.thumbnail' | translate}}</span>
+  
+  <!-- Zona heredable desde el padre -->
+  <div content-widget>
+    <img class="img-fluid" [src]="img" *ngIf="img">
+    <!-- Input para añadir un fichero -->
+    <input type="file" class="mt-2 mw-100" accept=".png, .jpg" (change)="uploadFile($event)">
+  </div>
+
+  <!-- Zona heredable desde el padre -->
+  <span footer-widget>{{'label.info.widget.thumbnail' | translate}}</span>
+
+</app-widget>
+
+<!-- Spinner -->
+<div class="h-100 overlay" *ngIf="!loadImg">
+  <div class="spinner">
+    <img src="assets/img/spinner.gif" alt="">
+  </div>
+</div>

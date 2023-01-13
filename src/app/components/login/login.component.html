@@ -1,0 +1,58 @@
+<div class="row mt-4 mb-4" id="login">
+  <div class="col-12">
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <!-- Imagen del sitio -->
+        <img width=75 [src]="config.logoLogin">
+        <!-- Nombre del sitio -->
+        <span class="h1 ml-2">{{config.nameSite}}</span>
+      </div>
+    </div>
+
+    <!-- Si hay un error lo muestra -->
+    <div class="row" *ngIf="showLoginError">
+      <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>{{'label.login.error' | translate}}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <form #form="ngForm" (ngSubmit)="checkLogin()">
+
+          <!-- Email -->
+          <div class="row form-group">
+            <div class="col-12">
+              <label for="email">{{'label.email' | translate}}</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="infoLogin.email" name="email">
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="row form-group">
+            <div class="col-12">
+              <label for="password">{{'label.pass' | translate}}</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="infoLogin.password" name="pass">
+            </div>
+          </div>
+
+          <!-- Boton login -->
+          <div class="row form-group">
+            <div class="col-12">
+              <button [disabled]="form.invalid" type="submit"
+                class="btn btn-block btn-primary">{{'label.login' | translate}}</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

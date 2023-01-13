@@ -1,0 +1,14 @@
+<app-widget>
+
+  <!-- Zona heredable desde el padre -->
+  <span title-widget>{{'label.last.visits' | translate}}</span>
+  
+  <!-- Zona heredable desde el padre -->
+  <div content-widget>
+    <p-chart type="line" [data]="data" [responsive]="true" [options]="options"></p-chart>
+  </div>
+
+  <!-- Zona heredable desde el padre -->
+  <span footer-widget>{{'label.info.widget.visits' | translate}}</span>
+
+</app-widget>

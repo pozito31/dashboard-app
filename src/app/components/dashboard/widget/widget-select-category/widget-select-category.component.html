@@ -1,0 +1,32 @@
+<app-widget>
+
+  <!-- Zona heredable desde el padre -->
+  <span title-widget>{{'label.categories' | translate}}</span>
+
+  <!-- Zona heredable desde el padre -->
+  <div content-widget>
+
+    <!-- Mensaje cuando no hay categorias -->
+    <div class="row" *ngIf="categories.length === 0">
+      <div class="col-12">
+        <span>{{'label.no.categories' | translate}}</span>
+      </div>
+    </div>
+
+    <!-- Muestra las categorias -->
+    <ng-container *ngIf="categories.length > 0">
+      <div class="row" *ngFor="let category of categories">
+        <div class="col-12">
+          <p-checkbox name="category" [value]="category.id" [(ngModel)]="selectedCategories"
+            (onChange)="sendCategories()" [label]="category.name"></p-checkbox>
+        </div>
+      </div>
+    </ng-container>
+
+
+  </div>
+
+  <!-- Zona heredable desde el padre -->
+  <span footer-widget>{{'label.info.widget.categories' | translate}}</span>
+
+</app-widget>

@@ -1,0 +1,18 @@
+#dashboard {
+    overflow: auto;
+    padding: 30px;
+    background: #f1f1f1;
+}
+
+/* Arreglo qde altura */
+@media (max-width: 576px) {
+    #dashboard {
+        height: calc(100vh - 120px);
+    }
+}
+
+@media (min-width: 576px) {
+    #dashboard {
+        height: 100vh
+    }
+}

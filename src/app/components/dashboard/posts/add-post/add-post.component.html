@@ -1,0 +1,88 @@
+<div class="row" id="add-post">
+  <div class="col-12">
+
+    <div class="row no-gutters mb-4">
+      <div class="col-12 border-bottom pl-0 pb-2">
+        <span class="title-section">{{'label.add.post' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <form #form="ngForm" (ngSubmit)="addPost()">
+
+          <div class="row form-group">
+            <div class="col-12 mt-4 mb-4">
+              <label for="title">{{'label.title' | translate}}</label>
+              <input type="text" class="form-control" id="title" required #title="ngModel" name="title"
+                [(ngModel)]="post.title"
+                [ngClass]="{'is-valid': title.dirty && !title.errors, 'is-invalid': title.dirty && title.errors}">
+              <div class="valid-feedback">
+                <span>{{'label.success' | translate}}</span>
+              </div>
+              <div class="invalid-feedback">
+                <span *ngIf="title.errors?.required">{{'label.required' | translate}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-9 col-12 mb-4">
+              
+              <div class="row">
+                <div class="col-12">
+                   <angular-editor name="html" [config]="config" [(ngModel)]="post.content"></angular-editor>
+                </div>
+              </div>
+          
+              <div class="row mt-4">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-3 col-12 mb-4">
+              
+              <div class="row">
+                <div class="col-12">
+                  <app-widget-select-category (select)="getCategories($event)"></app-widget-select-category>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <app-widget-upload-thumbnail (sendPath)="getPath($event)"></app-widget-upload-thumbnail>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </form>
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<ng-template #modal_add_post let-modal>
+
+  <div class="modal-header">
+    <h5 class="modal-title">{{'label.success' | translate}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{'label.success.add.post' | translate}}
+  </div>
+
+</ng-template>

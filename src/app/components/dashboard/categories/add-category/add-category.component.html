@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-12">
+
+    <!-- titulo -->
+    <div class="row no-gutters mb-4">
+      <div class="col-12 border-bottom pl-0 pb-2">
+        <span class="title-section">{{'label.add.category' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <form #form="ngForm" (ngSubmit)="addCategory()">
+
+          <!-- Nombre categoria -->
+          <div class="row form-group">
+            <div class="col-12 mb-2">
+              <label for="name">{{'label.name.category' | translate}}</label>
+              <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="category.name" required
+                [ngClass]="{'is-valid': name.dirty && !name.errors, 'is-invalid': name.dirty && name.errors}">
+
+              <div class="valid-feedback">
+                <span>{{'label.success' | translate}}</span>
+              </div>
+              <div class="invalid-feedback">
+                <span *ngIf="name.errors?.required">{{'label.required' | translate}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Descripcion categoria -->
+          <div class="row form-group">
+            <div class="col-12">
+              <label for="description">{{'label.description.category' | translate}}</label>
+              <textarea name="description" class="form-control is-valid" id="description" name="description"
+                #description="ngModel" [(ngModel)]="category.description"></textarea>
+              <div class="valid-feedback">
+                <span>{{'label.success' | translate}}</span>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="row form-group">
+            <div class="col-12">
+              <button type="submit" [disabled]="form.invalid"
+                class="btn btn-primary">{{'label.save' | translate}}</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Templates -->
+
+<ng-template #modal_add_category let-modal>
+
+  <div class="modal-header">
+    <h5 class="modal-title">{{'label.success' | translate}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{'label.success.add.category' | translate}}
+  </div>
+
+</ng-template>
